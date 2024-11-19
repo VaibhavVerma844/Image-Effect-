@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta lang="en-us">
+		<meta name="viewport" content="width=device-width,
+		intial-scale=1.0"> 
+		<title>Image effect</title>
+		<style>
+			body{
+				display: flex;
+				background-color: black;
+				justify-content: center;
+			}
+			#container{
+				width:1000px;
+				height:800px;
+				border:2px solid red;
+				
+			}
+			#box{
+				width:900px;
+				height:600px;
+				border:2px solid blue;
+				margin:10px 50px 10px 50px;
+							}
+			.tool{
+				border:2px solid black;
+				width:100px;
+				height:20px;
+				margin:50px;
+				padding:6px;
+				font-family: sans-serif;
+				font-size: 20px;
+				color:white;
+				
+			}
+			.input{
+				width:100px ;
+				height:20px;
+				border:2px solid ;	
+				margin-top: 20px;
+			}
+			#content{
+				display: flex;
+				justify-content: space-between;
+			}
+			#pic{
+				background-image: url("MSI_MEG_ACE.jpg");
+				background-size: cover;
+				width:900px;
+				height:600px;
+				color: whitesmoke;
+			}
+			@media (min-width:500px) and (max-width:1200px){
+				#container{
+					width:100%;
+					height:100%;
+					display:flex;
+					flex-wrap: wrap;
+				}
+
+				
+			}
+
+		</style>		
+	</head>
+	<body>
+		<div id="container">
+			<div id="box">
+				<img src="MSI_MEG_GODLIKE.jpg" id="pic">
+			</div>
+			<div id="content">
+			<p class="tool"> Brightness
+				<input class="input" type="range" id="bright" min="0" max="400" oninput="bright()">
+			</p>
+			<p class="tool"> Contrast
+				<input class="input" type="range" id="contrast" min="0" max="400" oninput="contrast()">
+			</p>
+			<p class="tool"> Saturate
+				<input class="input" type="range" id="saturate" min="0" max="400" oninput="saturate()">
+			</p>
+			<p class="tool" > 
+				 <input type="file" id="upload" accept=".jpg, .png" style="opacity: 0;" oninput="upload()">
+				Upload ^
+			</div>
+		</div>
+		<script>
+			function bright(){
+				var x = document.getElementById("bright").value;
+				var pic = document.getElementById("pic");
+				pic.style.filter = "brightness("+x+"%)";
+			}
+
+			function contrast(){
+				var x = document.getElementById("contrast").value;
+				var pic = document.getElementById("pic");
+				pic.style.filter = "contrast("+x+"%)";
+			}
+
+			function saturate(){
+				var x = document.getElementById("saturate").value;
+				var pic = document.getElementById("pic");
+				pic.style.filter = "saturate("+x+"%)";
+			}
+
+			function upload(){
+				var z = document.getElementById("upload").value.replace(/.*(\/|\\)/,'');
+				var y = document.getElementById("pic");
+				y.src=z;
+			}
+
+		</script>
+
+	</body>
+</html>
